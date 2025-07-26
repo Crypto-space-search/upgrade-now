@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upgrade Popup</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    .upgrade-btn {
+      padding: 10px 20px;
+      background: green;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+    select, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    img {
+      max-width: 200px;
+      margin-top: 15px;
+    }
+    .close-btn {
+      background: red;
+      margin-top: 15px;
+    }
+    .wallet {
+      margin-top: 10px;
+      font-family: monospace;
+      color: #ccc;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Upgrade Button -->
+<button class="upgrade-btn" onclick="openModal()">🔓 Upgrade Now</button>
+
+<!-- Upgrade Modal -->
+<div class="modal" id="upgradeModal">
+  <div class="modal-content">
+    <h2>Select Your Plan</h2>
+    <select id="planSelect">
+      <option value="">-- Select a plan --</option>
+      <option value="199">⭐ One blockchain – $199</option>
+      <option value="399">⭐ Two blockchains – $399</option>
+      <option value="599">⭐ Three blockchains – $599</option>
+      <option value="799">⭐ Four blockchains – $799</option>
+      <option value="999">⭐ Five blockchains – $999</option>
+      <option value="1199">⭐ Six blockchains – $1199</option>
+      <option value="1399">⭐ Seven blockchains – $1399</option>
+      <option value="1599">⭐ Eight blockchains – $1599</option>
+      <option value="1799">⭐ Nine blockchains – $1799</option>
+    </select>
+
+    <!-- QR & Payment Details -->
+    <div id="qrSection" style="display:none;">
+      <img id="qrImage" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgv8_XkL7hLIcN9aNOg7eskC7-o4NWD1wCF9jCHfbV-7BKPQNncb4ciN3-974pV-pgHhOPIhzL1IugDeBqCvFrifJF9j_rzffG-6bdaGdaDs8cYEikK6Lqv9v5WyJNngy10fY6tSkbq2g4xhOCmGwGTOAHnv0HQbVef1FgTJzG_14u_NBW1s9ASvgvKjh3w/s320/IMG_20250630_161301.jpg" alt="QR Code" />
+      <div id="paymentAmount"></div>
+      <div class="wallet">
+        Wallet: 0x56169808ee926359c3403c2049d77c574b40db32
+      </div>
+    </div>
+
+    <button onclick="confirmUpgrade()">✅ Confirm</button>
+    <button class="close-btn" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  const modal = document.getElementById('upgradeModal');
+  const planSelect = document.getElementById('planSelect');
+  const qrSection = document.getElementById('qrSection');
+  const qrImage = document.getElementById('qrImage');
+  const paymentAmount = document.getElementById('paymentAmount');
+
+  function openModal() {
+    modal.style.display = 'flex';
+    planSelect.value = "";
+    qrSection.style.display = "none";
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  function confirmUpgrade() {
+    alert("✅ Thank you! Please complete your payment.");
+    closeModal();
+  }
+
+  planSelect.addEventListener("change", () => {
+    const amount = planSelect.value;
+    if (amount) {
+      qrSection.style.display = "block";
+      paymentAmount.innerHTML = `Please send <strong>$${amount}</strong> worth of USDT to the wallet below.`;
+    } else {
+      qrSection.style.display = "none";
+    }
+  });
+
+  window.onclick = function(event) {
+    if (event.target == modal) closeModal();
+  }
+</script>
+
+</body>
+</html>
