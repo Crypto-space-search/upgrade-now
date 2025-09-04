@@ -84,10 +84,10 @@
 
     <!-- QR & Payment Details -->
     <div id="qrSection" style="display:none;">
-      <img id="qrImage" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgv8_XkL7hLIcN9aNOg7eskC7-o4NWD1wCF9jCHfbV-7BKPQNncb4ciN3-974pV-pgHhOPIhzL1IugDeBqCvFrifJF9j_rzffG-6bdaGdaDs8cYEikK6Lqv9v5WyJNngy10fY6tSkbq2g4xhOCmGwGTOAHnv0HQbVef1FgTJzG_14u_NBW1s9ASvgvKjh3w/s320/IMG_20250630_161301.jpg" alt="QR Code" />
+      <img id="qrImage" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOw9LDWpiYvUWYEKbxdTYMQdcCflq2YUP47Ykm9h9xUF9tGU_gqjoLDsZKxdLzGMQ8BANGZ89MhYi55ifZPt3DcFFLsQsRtFJ5rLojMP7NwI667IDL4PXGX42eLzFf1PBiPQ6CkHI1wJ1MtNfNrroALDH4XqirZmhIyWjDZQ2v-hCZ_SZK-C6-C7Ym_UIj/s1250/IMG_20250904_073141.jpg" alt="QR Code" />
       <div id="paymentAmount"></div>
       <div class="wallet">
-        Wallet: 0x56169808ee926359c3403c2049d77c574b40db32
+        Wallet: TNdYAjGuMDGkvDXk8VGjmB8Ri9b91JTrRm
       </div>
     </div>
 
@@ -123,7 +123,7 @@
     const amount = planSelect.value;
     if (amount) {
       qrSection.style.display = "block";
-      paymentAmount.innerHTML = `Please send <strong>$${amount}</strong> worth of USDT to the wallet below.`;
+      paymentAmount.innerHTML = `Please send <strong>$${amount}</strong> worth of USDT TRC20 to the wallet below.`;
     } else {
       qrSection.style.display = "none";
     }
